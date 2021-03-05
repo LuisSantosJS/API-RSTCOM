@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.4",
+    "ts-node": "^8.10.2",
     "mongoose": "^5.11.18"
   },
   "devDependencies": {
@@ -27,7 +28,6 @@
     "@types/express": "^4.17.6",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/mongoose": "^5.10.3",
-    "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.9.3"
   }
