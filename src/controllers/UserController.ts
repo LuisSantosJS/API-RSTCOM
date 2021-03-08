@@ -91,11 +91,13 @@ export default class UserController {
             }
 
             return response.json({
-                message: 'success', result: {
+                message: 'success',
+                result: {
                     name: value.newValue?.name,
                     email: value.newValue?.email,
                     password: value.newValue?.password
-                }
+                },
+                token: createToken(String(value.newValue?.email))
             })
 
         } catch (e) {
