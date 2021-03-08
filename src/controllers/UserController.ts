@@ -11,6 +11,7 @@ interface User {
     _id: string;
     name: string;
     email: string;
+    avatar: string;
 }
 export default class UserController {
     async index(request: Request, response: Response) {
@@ -46,7 +47,8 @@ export default class UserController {
                 value: {
                     id: userSaved._id,
                     name: userSaved.name,
-                    email: userSaved.email
+                    email: userSaved.email,
+                    avatar: userSaved.avatar
                 },
                 token
             })
@@ -80,9 +82,10 @@ export default class UserController {
             return response.json({ message: 'error', value: value.value })
         }
         try {
-            Users.findOneAndUpdate({ _id: value.id }, {
+            await Users.findOneAndUpdate({ _id: value.id }, {
                 name: value.newValue?.name,
-                email: value.newValue?.email
+                email: value.newValue?.email,
+                avatar: String(value.newValue?.avatar)
             })
             if (value.newValue?.password) {
                 await Users.findOneAndUpdate({ _id: value.id }, {
@@ -95,6 +98,7 @@ export default class UserController {
                 result: {
                     name: value.newValue?.name,
                     email: value.newValue?.email,
+                    avatar: value.newValue?.avatar,
                     password: value.newValue?.password
                 },
                 token: createToken(String(value.newValue?.email))
@@ -105,5 +109,15 @@ export default class UserController {
             return response.json({ message: 'error', value: e });
         }
 
+    }
+    async deleteAll(request: Request, response: Response) {
+        try {
+
+            const result = await Users.remove()
+            return response.json({ message: 'success', value: result });
+        } catch (e) {
+            console.log(e)
+            return response.json({ message: 'error', value: e });
+        }
     }
 }

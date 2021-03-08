@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { SchemaOptions } from 'mongoose'
 
 
 const userSchema = new mongoose.Schema({
@@ -10,10 +10,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    password:{
+    avatar: {
+        type: String,
+        required: true
+    } as SchemaOptions,
+    password: {
         type: String,
         required: true,
-        
     }
 })
 

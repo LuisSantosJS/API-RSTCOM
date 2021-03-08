@@ -11,6 +11,7 @@ routes.get('/api/users', userController.index)
 routes.post('/api/users', userController.create)
 routes.put('/api/users', userController.update)
 routes.post('/api/users/login', userController.login)
+// routes.delete('/api/users', userController.deleteAll)
 
 routes.get('/api/list/:userID', listController.index)
 routes.put('/api/list', listController.update)

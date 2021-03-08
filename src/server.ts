@@ -4,7 +4,7 @@ import routes from './router';
 import mongoose from 'mongoose'
 const port = process.env.PORT || 3000;
 const app = express();
-app.use(express.json());
+app.use(express.json({limit: '100mb' }));
 app.use(cors());
 
 mongoose.connect('mongodb://mongoso:1nf0rm4t1c4@geonosis.mongodb.umbler.com:48555/mongoso', {
